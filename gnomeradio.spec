@@ -1,12 +1,11 @@
 %define name	gnomeradio
-%define version	1.6
+%define version	1.7
 %define cvs	%{nil}
-%define release	3
 
 Summary:	A FM-Tuner program for Gnome
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel %{release}
+Release:	%mkrel 1
 License:	GPL
 Group:		Sound
 Source0:	%{name}-%{version}.tar.bz2
@@ -47,18 +46,6 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 
-(cd $RPM_BUILD_ROOT
-mkdir -p .%{_menudir}
-cat > .%{_menudir}/%{name} <<EOF
-?package(%{name}):\
-command="%{_bindir}/%{name}"\
-icon="%{name}.png"\
-title="Gnomeradio"\
-longtitle="A FM-Tuner program for Gnome"\
-needs="x11"\
-section="Multimedia/Sound" xdg="true"
-EOF
-)
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Multimedia-Sound" \
@@ -106,7 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/omf/gnomeradio/gnomeradio-C.omf
 %dir %{_datadir}/gnome/help/gnomeradio
 %{_datadir}/gnome/help/gnomeradio/C/*
-%{_menudir}/*
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png

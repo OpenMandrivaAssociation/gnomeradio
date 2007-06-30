@@ -19,10 +19,11 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper
 BuildRequires:	liblirc-devel
 BuildRequires:	gnome-common
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	intltool
 BuildRequires:	perl-XML-Parser
 BuildRequires:	desktop-file-utils
+BuildRequires:	libcddb-slave2-devel
 
 %description
 Gnomeradio is a FM radio tuner for the GNOME desktop.

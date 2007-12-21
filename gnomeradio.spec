@@ -12,6 +12,7 @@ Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_16.png
 Source2:	%{name}_32.png
 Source3:	%{name}_48.png
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		http://mfcn.ilo.de/gnomeradio/
 BuildRequires:	pkgconfig
 BuildRequires:	libgnomeui2-devel

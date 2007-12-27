@@ -12,6 +12,10 @@ Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_16.png
 Source2:	%{name}_32.png
 Source3:	%{name}_48.png
+Patch0: fix_missing_description_in_gnomeradio.xml.patch
+Patch1: GLib_threading.patch
+Patch2: gnomeradio.desktop.patch
+Patch3: trayicon.c.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		http://mfcn.ilo.de/gnomeradio/
 BuildRequires:	pkgconfig
@@ -36,9 +40,14 @@ MP3 or Ogg files.
 %prep
 %setup -q -n %{name}-%{version}
 
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+
 %build
-%configure
-%make
+%configure2_5x
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -70,6 +79,7 @@ rm -rf %buildroot/var/lib/scrollkeeper/*
 %update_menus
 %update_scrollkeeper
 %post_install_gconf_schemas %name
+%update_icon_cache hicolor
 
 %preun
 %preun_uninstall_gconf_schemas %name
@@ -77,6 +87,7 @@ rm -rf %buildroot/var/lib/scrollkeeper/*
 %postun
 %clean_menus
 %clean_scrollkeeper
+%clean_icon_cache hicolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -87,15 +98,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README.lirc README.recording TODO
 %{_bindir}/*
 %{_sysconfdir}/gconf/schemas/gnomeradio.schemas
-%{_datadir}/pixmaps/radio.png
-%{_datadir}/pixmaps/gnomeradio.png
 %{_datadir}/applications/gnomeradio.desktop
 %dir %{_datadir}/omf/gnomeradio
 %{_datadir}/omf/gnomeradio/gnomeradio-C.omf
 %dir %{_datadir}/gnome/help/gnomeradio
 %{_datadir}/gnome/help/gnomeradio/C/*
+%{_datadir}/gnome/help/gnomeradio/sv/*
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
-
-
+%{_datadir}/icons/hicolor/*
+%{_datadir}/omf/gnomeradio/gnomeradio-sv.omf

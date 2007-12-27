@@ -28,6 +28,7 @@ BuildRequires:	intltool
 BuildRequires:	perl-XML-Parser
 BuildRequires:	desktop-file-utils
 BuildRequires:	libcddb-slave2-devel
+BuildRequires:  libgstreamer-plugins-base-devel
 
 %description
 Gnomeradio is a FM radio tuner for the GNOME desktop.

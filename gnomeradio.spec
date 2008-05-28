@@ -6,7 +6,7 @@ Summary:	A FM-Tuner program for Gnome
 Name:		%{name}
 Version:	%{version}
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Sound
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_16.png
@@ -29,7 +29,7 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	desktop-file-utils
 BuildRequires:	libcddb-slave2-devel
 BuildRequires:  libgstreamer-plugins-base-devel
-BuildRequires:  gtk-doc-utils
+BuildRequires:  gnome-doc-utils
 
 %description
 Gnomeradio is a FM radio tuner for the GNOME desktop.

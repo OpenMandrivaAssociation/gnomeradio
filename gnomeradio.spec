@@ -5,7 +5,7 @@
 Summary:	A FM-Tuner program for Gnome
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sound
 Source0:	%{name}-%{version}.tar.bz2

@@ -5,13 +5,10 @@
 Summary:	A FM-Tuner program for Gnome
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Sound
 Source0:	%{name}-%{version}.tar.bz2
-Source1:	%{name}_16.png
-Source2:	%{name}_32.png
-Source3:	%{name}_48.png
 Patch0: fix_missing_description_in_gnomeradio.xml.patch
 Patch1: GLib_threading.patch
 Patch2: gnomeradio.desktop.patch
@@ -48,19 +45,15 @@ MP3 or Ogg files.
 %patch3 -p1
 
 %build
-%configure2_5x
-make
+%configure2_5x --disable-scrollkeeper --disable-install-schemas
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-%makeinstall
-unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
-
+%makeinstall_std
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Multimedia-Sound" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 
@@ -68,12 +61,9 @@ install -d %buildroot/%_miconsdir
 install -d %buildroot/%_liconsdir
 install -d %buildroot/%_iconsdir
 
-install -m644 %{SOURCE1} %buildroot/%_miconsdir/%{name}.png
-install -m644 %{SOURCE2} %buildroot/%_iconsdir/%{name}.png
-install -m644 %{SOURCE3} %buildroot/%_liconsdir/%{name}.png
-
-# Are these needed?
-rm -rf %buildroot/var/lib/scrollkeeper/*
+install -m644 data/icons/16x16/%name.png %buildroot/%_miconsdir/%{name}.png
+install -m644 data/icons/32x32/%name.png %buildroot/%_iconsdir/%{name}.png
+install -m644 data/icons/48x48/%name.png %buildroot/%_liconsdir/%{name}.png
 
 %{find_lang} %{name}
 
@@ -113,5 +103,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
-%{_datadir}/icons/hicolor/*
-%{_datadir}/omf/gnomeradio/gnomeradio-sv.omf
+%{_datadir}/icons/hicolor/*/*/*
+%lang(sv) %{_datadir}/omf/gnomeradio/gnomeradio-sv.omf

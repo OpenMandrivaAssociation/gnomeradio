@@ -10,8 +10,6 @@ Group:		Sound
 Source0:	http://www.wh-hms.uni-ulm.de/~mfcn/gnomeradio/packages/%{name}-%{version}.tar.gz
 Patch0:		gnomeradio-1.8-description.patch
 Patch1:		gnomeradio-1.8-glib-threading.patch
-Patch2: gnomeradio.desktop.patch
-Patch3:		gnomeradio-1.8-trayicon.c.patch
 Patch4:		gnomeradio-1.8-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		http://mfcn.ilo.de/gnomeradio/
@@ -40,8 +38,6 @@ MP3 or Ogg files.
 %setup -q -n %{name}-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-#patch3 -p1
 %patch4 -p1
 
 %build

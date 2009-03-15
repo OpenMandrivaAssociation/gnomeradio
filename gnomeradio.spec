@@ -1,18 +1,18 @@
 %define name	gnomeradio
-%define version	1.7
-%define cvs	%{nil}
+%define version	1.8
 
 Summary:	A FM-Tuner program for Gnome
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sound
-Source0:	%{name}-%{version}.tar.bz2
-Patch0: fix_missing_description_in_gnomeradio.xml.patch
-Patch1: GLib_threading.patch
+Source0:	http://www.wh-hms.uni-ulm.de/~mfcn/gnomeradio/packages/%{name}-%{version}.tar.gz
+Patch0:		gnomeradio-1.8-description.patch
+Patch1:		gnomeradio-1.8-glib-threading.patch
 Patch2: gnomeradio.desktop.patch
-Patch3: trayicon.c.patch
+Patch3:		gnomeradio-1.8-trayicon.c.patch
+Patch4:		gnomeradio-1.8-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		http://mfcn.ilo.de/gnomeradio/
 BuildRequires:	pkgconfig
@@ -38,11 +38,11 @@ MP3 or Ogg files.
 
 %prep
 %setup -q -n %{name}-%{version}
-
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#patch3 -p1
+%patch4 -p1
 
 %build
 %configure2_5x --disable-scrollkeeper --disable-install-schemas
@@ -54,18 +54,10 @@ rm -rf $RPM_BUILD_ROOT
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
+  --add-category="Audio;Tuner" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
-
-install -d %buildroot/%_miconsdir
-install -d %buildroot/%_liconsdir
-install -d %buildroot/%_iconsdir
-
-install -m644 data/icons/16x16/%name.png %buildroot/%_miconsdir/%{name}.png
-install -m644 data/icons/32x32/%name.png %buildroot/%_iconsdir/%{name}.png
-install -m644 data/icons/48x48/%name.png %buildroot/%_liconsdir/%{name}.png
-
-%{find_lang} %{name}
+%{find_lang} %{name} --with-gnome
 
 %if %mdkversion < 200900
 %post
@@ -88,7 +80,6 @@ install -m644 data/icons/48x48/%name.png %buildroot/%_liconsdir/%{name}.png
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
 %files -f %{name}.lang
 %defattr(-, root, root)
 %doc AUTHORS ChangeLog README.lirc README.recording TODO
@@ -97,11 +88,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/gnomeradio.desktop
 %dir %{_datadir}/omf/gnomeradio
 %{_datadir}/omf/gnomeradio/gnomeradio-C.omf
-%dir %{_datadir}/gnome/help/gnomeradio
-%{_datadir}/gnome/help/gnomeradio/C/*
-%{_datadir}/gnome/help/gnomeradio/sv/*
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
-%{_datadir}/icons/hicolor/*/*/*
+%lang(es) %{_datadir}/omf/%{name}/gnomeradio-es.omf
+%lang(fr) %{_datadir}/omf/%{name}/gnomeradio-fr.omf
+%lang(oc) %{_datadir}/omf/%{name}/gnomeradio-oc.omf
 %lang(sv) %{_datadir}/omf/gnomeradio/gnomeradio-sv.omf
+%{_iconsdir}/hicolor/*/*/*

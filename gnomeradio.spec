@@ -11,6 +11,7 @@ Source0:	http://www.wh-hms.uni-ulm.de/~mfcn/gnomeradio/packages/%{name}-%{versio
 Patch0:		gnomeradio-1.8-description.patch
 Patch1:		gnomeradio-1.8-glib-threading.patch
 Patch4:		gnomeradio-1.8-fix-str-fmt.patch
+Patch5:		gnomeradio-1.8-v4l1.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		http://mfcn.ilo.de/gnomeradio/
 BuildRequires:	pkgconfig
@@ -21,6 +22,7 @@ BuildRequires:	gnome-common
 BuildRequires:	automake
 BuildRequires:	intltool
 BuildRequires:	perl-XML-Parser
+BuildRequires:	libv4l-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libcddb-slave2-devel
 BuildRequires:  libgstreamer-plugins-base-devel
@@ -39,6 +41,7 @@ MP3 or Ogg files.
 %patch0 -p1
 %patch1 -p1
 %patch4 -p1
+%patch5 -p0
 
 %build
 %configure2_5x --disable-scrollkeeper --disable-install-schemas

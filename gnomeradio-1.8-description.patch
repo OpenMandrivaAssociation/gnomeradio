@@ -1,0 +1,19 @@
+--- gnomeradio-1.8/help/C/gnomeradio.xml.orig	2008-09-13 18:10:50.000000000 +0200
++++ gnomeradio-1.8/help/C/gnomeradio.xml	2009-03-15 11:11:08.000000000 +0100
+@@ -76,7 +76,15 @@
+ 		<para> To report a bug or make a suggestion regarding &app; or this
+ 		  manual, send a e-mail to <ulink url="mailto:mfcn@gmx.de" type="mail">Jörgen Scheibengruber</ulink>. </para>
+ 	 </legalnotice> 
+-  </articleinfo> 
++	 <abstract role="description">
++		 <para>&app; allows you to listen FM radio in your GNOME desktop.
++			 It should work with every FM tuner card that is supported by video4linux.
++			 Remote controls are supported via (optional) LIRC-support. &app;
++			 can also record radio as a Wave, MP3 or Ogg files.
++			 This manual introduces you to &app;
++		 </para>
++	 </abstract>
++  </articleinfo>
+   <indexterm> 
+ 	 <primary>&app;</primary> 
+   </indexterm> 

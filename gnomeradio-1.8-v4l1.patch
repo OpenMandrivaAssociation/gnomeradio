@@ -1,0 +1,11 @@
+--- src/v4l1.c.kernel	2011-05-23 15:54:42.000000000 +0200
++++ src/v4l1.c	2011-05-23 15:56:38.000000000 +0200
+@@ -23,7 +23,7 @@
+ #include <sys/ioctl.h>
+ #include <assert.h>
+ 
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include "radio.h"
+ 
+ typedef struct _V4L1RadioDev V4L1RadioDev;

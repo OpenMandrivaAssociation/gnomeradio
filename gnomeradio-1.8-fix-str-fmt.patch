@@ -1,0 +1,31 @@
+--- gnomeradio-1.8/src/gui.c.str	2009-03-15 11:23:38.000000000 +0100
++++ gnomeradio-1.8/src/gui.c	2009-03-15 11:24:45.000000000 +0100
+@@ -171,7 +171,7 @@
+ 					g_list_length(data.stations));
+ 			
+ 			dialog = gtk_message_dialog_new(GTK_WINDOW(app), DIALOG_FLAGS, GTK_MESSAGE_QUESTION,
+-					GTK_BUTTONS_YES_NO, text);
++					GTK_BUTTONS_YES_NO, "%s", text);
+ 			g_free(text);
+ 			
+ 			int response = gtk_dialog_run(GTK_DIALOG(dialog));
+@@ -784,6 +784,7 @@
+ 	{
+ 		GtkWidget *dialog;
+ 		dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
++				"%s",
+ 				error->message);
+ 		gtk_dialog_run (GTK_DIALOG (dialog));
+ 		gtk_widget_destroy (dialog);
+@@ -1210,9 +1211,10 @@
+ 	g_assert(text);
+ 	
+ 	dialog = gtk_message_dialog_new(NULL, DIALOG_FLAGS, type, GTK_BUTTONS_CLOSE,
++			"%s",
+ 			text);
+ 	if (details) {
+-		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), details);
++		gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", details);
+ 	}
+ 	gtk_dialog_run(GTK_DIALOG (dialog));
+ 	gtk_widget_destroy(dialog);

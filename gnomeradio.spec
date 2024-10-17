@@ -13,7 +13,7 @@ Patch1:		gnomeradio-1.8-glib-threading.patch
 Patch4:		gnomeradio-1.8-fix-str-fmt.patch
 Patch5:		gnomeradio-1.8-v4l1.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
-URL:		http://mfcn.ilo.de/gnomeradio/
+URL:		https://mfcn.ilo.de/gnomeradio/
 BuildRequires:	pkgconfig
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper

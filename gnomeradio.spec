@@ -14,6 +14,9 @@ Patch4:		gnomeradio-1.8-fix-str-fmt.patch
 Patch5:		gnomeradio-1.8-v4l1.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 URL:		https://mfcn.ilo.de/gnomeradio/
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	pkgconfig
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	scrollkeeper
